@@ -39,12 +39,22 @@ public class Main {
                 case "withdraw":
                     System.out.print("Enter the amount to withdraw : ");
                     double withdrawAmount = sc.nextDouble();
+
+                    if(withdrawAmount > accountBalance){
+                        System.out.println("You don't have enough money in your account !!");
+                        break;
+                    }
                     Transaction withdrawTransaction = factory.getTransaction(transactionType);
                     accountBalance = withdrawTransaction.performTransaction(accountBalance, withdrawAmount);
                     break;
                 case "transfer":
                     System.out.print("Enter the amount to transfer : ");
                     double transferAmount = sc.nextDouble();
+                    
+                    if(transferAmount > accountBalance){
+                        System.out.println("You don't have enough money in your account !!");
+                        break;
+                    }
                     Transaction transfeTransaction = factory.getTransaction(transactionType);
                     accountBalance = transfeTransaction.performTransaction(accountBalance, transferAmount);
                     break;
